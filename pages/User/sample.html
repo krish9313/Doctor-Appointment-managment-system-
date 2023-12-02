@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<style>
+		button {
+
+			width: 100px;
+			height: 40px;
+			border-radius: 10px;
+		}
+
+		button:hover {
+			transform: scale(1.2);
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<h1 style="text-align: left;">Update Data</h1>
+	<form method="GET" action=update2.php>
+
+		<?php
+
+			$cn = mysqli_connect("localhost","root","","damsdatabase");
+
+			if (!$cn)
+			{
+				die("Connection Failed :" .mysqli_connect_error());
+			}else
+			{
+
+
+				$ID=$_GET['ID'];
+				$sql = "Select * from bookappoint where id = '$ID'";
+				
+				$rs=$cn->query($sql);
+
+				echo "<table>";
+				$r=$rs->fetch_assoc();
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Id is  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='number' name='txtid' value='$ID' readonly>";
+						echo "</td>";
+					echo "</tr>";
+
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Name is  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='text' name='txtnm' value='$r[Name]'>";
+						echo "</td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Email is  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='text' name='txtem' value='$r[Email]'>";
+						echo "</td>";
+					echo "</tr>";
+
+
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Telephone is   ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='telephone' name='txtTP' value='$r[Telephone]' maxlength='10'>";
+						echo "</td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Date is  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='datetime-local' name='txtDT' value='$r[BDate]'>";
+						echo "</td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Please select specialization  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<select name='txtspecialization' id='specialization' value='$r[specialization]'
+                                        class='form-control' required>
+                                        <option>Select specialization</option>
+                                        <option>Orthopedics</option>
+                                        <option>Pediatrics</option>
+                                        <option>Radiology</option>
+                                        <option>General Surgery</option>
+                                        <option>Ophthalmology</option>
+                                        <option>Pathology</option>
+                                        <option>ENT</option>
+                                    </select>";
+						echo "</td>";
+					echo "</tr>";
+
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Please select Doctor ";
+						echo "</td>";
+						echo "<td>";
+							echo "<select name='txtdoctorlist' id='specialization' value='$r[Doctor]'
+                                        class='form-control' required>
+                                        <option>Select Doctor</option>
+                                        <option>Dr. Anuj Sharma</option>
+                                        <option>Dr. Niraj Trivedi</option>
+                                        <option>Dr. Rakesh Khanna</option>
+                                        <option>Dr. Priyanka chopra</option>
+                                        <option>Dr. Abhishek Solanki</option>
+                                        <option>Dr. Vivek Mistry</option>
+                                        <option>Dr. Rahul Shukla</option>
+                            </select>";
+						echo "</td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Message is   ";
+						echo "</td>";
+						echo "<td>";
+							echo " <input type='text' name='txtmsg' value='$r[message]'>";
+						echo "</td>";
+					echo "</tr>";
+
+
+					echo "<tr>";
+						echo "<td colspan='2'>";
+							echo "<input type='submit' value='update'>";
+						echo "</td>";
+					echo "</tr>";
+
+
+			}
+				echo "</table>";
+
+			$cn->close();
+		?>
+	</form>
+
+
+</body>
+
+</html>
+
+
+<h1 style="text-align: left;">Update Data</h1>
+<form method="GET" action=update2.php>
+
+	<?php
+
+			$cn = mysqli_connect("localhost","root","","damsdatabase");
+
+			if (!$cn)
+			{
+				die("Connection Failed :" .mysqli_connect_error());
+			}else
+			{
+
+
+				$ID=$_GET['ID'];
+				$sql = "Select * from bookappoint where id = '$ID'";
+				
+				$rs=$cn->query($sql);
+
+				echo "<table>";
+				$r=$rs->fetch_assoc();
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Id is  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='number' name='txtid' value='$ID' readonly>";
+						echo "</td>";
+					echo "</tr>";
+
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Name is  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='text' name='txtnm' value='$r[Name]'>";
+						echo "</td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Email is  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='text' name='txtem' value='$r[Email]'>";
+						echo "</td>";
+					echo "</tr>";
+
+
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Telephone is   ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='telephone' name='txtTP' value='$r[Telephone]' maxlength='10'>";
+						echo "</td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Date is  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<input type='datetime-local' name='txtDT' value='$r[BDate]'>";
+						echo "</td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Please select specialization  ";
+						echo "</td>";
+						echo "<td>";
+							echo "<select name='txtspecialization' id='specialization' value='$r[specialization]'
+                                        class='form-control' required>
+                                        <option>Select specialization</option>
+                                        <option>Orthopedics</option>
+                                        <option>Pediatrics</option>
+                                        <option>Radiology</option>
+                                        <option>General Surgery</option>
+                                        <option>Ophthalmology</option>
+                                        <option>Pathology</option>
+                                        <option>ENT</option>
+                                    </select>";
+						echo "</td>";
+					echo "</tr>";
+
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Please select Doctor ";
+						echo "</td>";
+						echo "<td>";
+							echo "<select name='txtdoctorlist' id='specialization' value='$r[Doctor]'
+                                        class='form-control' required>
+                                        <option>Select Doctor</option>
+                                        <option>Dr. Anuj Sharma</option>
+                                        <option>Dr. Niraj Trivedi</option>
+                                        <option>Dr. Rakesh Khanna</option>
+                                        <option>Dr. Priyanka chopra</option>
+                                        <option>Dr. Abhishek Solanki</option>
+                                        <option>Dr. Vivek Mistry</option>
+                                        <option>Dr. Rahul Shukla</option>
+                            </select>";
+						echo "</td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td>";
+							echo "Your Message is   ";
+						echo "</td>";
+						echo "<td>";
+							echo " <input type='text' name='txtmsg' value='$r[message]'>";
+						echo "</td>";
+					echo "</tr>";
+
+
+					echo "<tr>";
+						echo "<td colspan='2'>";
+							echo "<input type='submit' value='update'>";
+						echo "</td>";
+					echo "</tr>";
+
+
+			}
+				echo "</table>";
+
+			$cn->close();
+		?>
+</form>
+
+
+
+
+
+<h2 class="text-center mb-lg-3 mb-2">Update Detailes</h2>
+
+<form role="form" method="GET" action="update2.php">
+	<?php
+
+			$cn = mysqli_connect("localhost","root","","damsdatabase");
+
+			if (!$cn)
+			{
+				die("Connection Failed :" .mysqli_connect_error());
+			}else
+			{
+
+
+				$ID=$_GET['ID'];
+				$sql = "Select * from bookappoint where id = '$ID'";
+				
+				$rs=$cn->query($sql);
+
+				$r=$rs->fetch_assoc();
+
+                            
+
+                        echo "<div class='row'>
+                                <div class='col-lg-6 col-12'>
+                                    <input type='number' name='txtid' class='form-control'
+                                        value='$ID' required='true' disabled>
+                                </div>";
+
+                        echo "<div class='col-lg-6 col-12'>
+                                    <input type='text' name='txtnm' class='form-control'
+                                        value='$r[Name]' required='true'>
+                                </div>";
+
+                        echo    "<div class='col-lg-6 col-12'>
+                                    <input type='email' name='txtem' pattern='[^ @]*@[^ @]*'
+                                        class='form-control' value='$r[Email]' required='true'>
+                                </div>";
+
+						echo    "<div class='col-lg-6 col-12'>
+                                    <input type='telephone' name='txtTP' id='phone' class='form-control'
+                                        value='$r[Telephone]' maxlength='10'>
+                                </div>";
+
+                        echo    "<div class='col-lg-6 col-12'>
+                                    <input type='datetime-local' name='txtDT' value='$r[BDate]' class='form-control'>
+                                </div>";
+
+                                
+                        echo    "<div class='col-lg-6 col-12'>
+	                    			<select name='txtspecialization' class='form-control'>
+	                        			<option>Select specialization</option>
+	                        			<option" . ($r['specialization'] === 'Orthopedics' ? ' selected' : '') . ">Orthopedics</option>
+	                        			<option" . ($r['specialization'] === 'Pediatrics' ? ' selected' : '') . ">Pediatrics</option>
+	                        			<option" . ($r['specialization'] === 'Radiology' ? ' selected' : '') . ">Radiology</option>
+	                        			<option" . ($r['specialization'] === 'General Surgery' ? ' selected' : '') . ">General Surgery</option>
+	                        			<option" . ($r['specialization'] === 'Ophthalmology' ? ' selected' : '') . ">Ophthalmology</option>
+	                        			<option" . ($r['specialization'] === 'Pathology' ? ' selected' : '') . ">Pathology</option>
+	                        			<option" . ($r['specialization'] === 'ENT' ? ' selected' : '') . ">ENT</option>
+	                    			</select>
+                				</div>";
+
+
+                        echo 	"<div class='col-lg-12 col-12'>
+				                    <select name='txtdoctor' class='form-control'>
+				                        <option>Select Doctor</option>
+				                        <option" . ($r['Doctor'] === 'Dr. Anuj Sharma' ? ' selected' : '') . ">Dr. Anuj Sharma</option>
+				                        <option" . ($r['Doctor'] === 'Dr. Niraj Trivedi' ? ' selected' : '') . ">Dr. Niraj Trivedi</option>
+				                        <option" . ($r['Doctor'] === 'Dr. Rakesh Khanna' ? ' selected' : '') . ">Dr. Rakesh Khanna</option>
+				                        <option" . ($r['Doctor'] === 'Dr. Priyanka Chopra' ? ' selected' : '') . ">Dr. Priyanka Chopra</option>
+				                        <option" . ($r['Doctor'] === 'Dr. Abhishek Solanki' ? ' selected' : '') . ">Dr. Abhishek Solanki</option>
+				                        <option" . ($r['Doctor'] === 'Dr. Vivek Mistry' ? ' selected' : '') . ">Dr. Vivek Mistry</option>
+				                        <option" . ($r['Doctor'] === 'Dr. Rahul Shukla' ? ' selected' : '') . ">Dr. Rahul Shukla</option>
+				                    </select>
+                				</div>";
+
+
+                        echo    "<div class='col-12'>
+                                    <textarea class='form-control' rows='5' name='txtmsg'>$r[message]</textarea>
+                                </div>";
+
+                        echo    "<div class='col-lg-3 col-md-4 col-6 mx-auto'>
+                                    <input type='submit' value='update'>
+                                </div>
+                            </div>";
+
+                            	}
+
+				$cn->close();
+		?>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+
+	<div class="col-lg-8 col-12 mx-auto">
+		<div class="booking-form">
+
+			<h2 class="text-center mb-lg-3 mb-2">Doctor Available Time</h2>
+
+			<table>
+				<tr>
+					<th>Doctor Name</th>
+					<th>Speciality</th>
+					<th>Available Time</th>
+				</tr>
+				<tr>
+					<td>Dr. Anuj Sharma</td>
+					<td>ENT</td>
+					<td>8:00 AM To 2:00 PM</td>
+				</tr>
+				<tr>
+					<td>Dr. Niraj Trivedi</td>
+					<td>Orthopedics</td>
+					<td>9:00 AM To 12:00 PM</td>
+				</tr>
+				<tr>
+					<td>Dr. Rakesh Khanna</td>
+					<td>Pathalogy</td>
+					<td>8:00 AM To 9:00 PM</td>
+				</tr>
+				<tr>
+					<td>Dr. Vivek Mistry</td>
+					<td>General Surgery</td>
+					<td>8:00 AM To 12:00 PM</td>
+				</tr>
+				<tr>
+					<td>Dr. Priyanka Chopra</td>
+					<td>Pediatrics</td>
+					<td>12:00 PM To 6:00 PM</td>
+				</tr>
+				<tr>
+					<td>Dr. Rahul Shukla</td>
+					<td>Ophthalmology</td>
+					<td>3:00 PM To 10:00 PM</td>
+				</tr>
+				<tr>
+					<td>Dr. Abhishek Solanki</td>
+					<td>Radiology</td>
+					<td>9:00 PM To 12:00 PM</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+<br><br>
+<hr><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var doctorSlotTimeOptions =
+{
+"8:00 AM to 14:00 PM" :["8:00 AM to 9:00 PM",
+"9:00 AM to 10:00 PM",
+"10:00 AM to 11:00 PM",
+"11:00 AM to 12:00 PM",
+"12:00 AM to 13:00 PM",
+"13:00 AM to 14:00 PM"],
+
+"10:00 AM to 13:00 PM" :["10:00 AM to 11:00 PM",
+"11:00 AM to 12:00 PM",
+"12:00 AM to 13:00 PM"]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+	$(document).ready(function () {
+		// Store the doctor options based on specialization
+		var doctorOptions = {
+			"General Surgery": ["Dr. Vivek Mistry"],
+			"ENT": ["Dr. Anuj Sharma"]
+			// Add more specializations and doctors as needed
+		};
+
+		// Store the doctor time options based on doctor
+		var doctorTimeOptions = {
+			"Dr. Vivek Mistry": ["8:00 AM to 14:00 PM"],
+			"Dr. Anuj Sharma": ["10:00 AM to 13:00 PM"]
+			// Add more doctors and time options as needed
+		};
+
+		// Store the doctor slot time options based on time
+		var doctorSlotTimeOptions = {
+			"8:00 AM to 14:00 PM": [
+				"8:00 AM to 9:00 PM",
+				"9:00 AM to 10:00 PM",
+				"10:00 AM to 11:00 PM",
+				"11:00 AM to 12:00 PM",
+				"12:00 AM to 13:00 PM",
+				"13:00 AM to 14:00 PM"
+			],
+			"10:00 AM to 13:00 PM": [
+				"10:00 AM to 11:00 PM",
+				"11:00 AM to 12:00 PM",
+				"12:00 AM to 13:00 PM"
+			]
+		};
+
+		// Function to update the doctor options
+		function updateDoctorOptions(specialization) {
+			var doctorList = $('#doctorlist');
+			doctorList.empty();
+
+			// Get the doctors for the selected specialization
+			var doctors = doctorOptions[specialization];
+
+			// Add the doctor options to the select element
+			$.each(doctors, function (index, doctor) {
+				doctorList.append($('<option></option>').text(doctor));
+			});
+
+			// Update the doctor time options
+			updateDoctorTimeOptions(doctorList.val());
+		}
+
+		// Function to update the doctor time options
+		function updateDoctorTimeOptions(doctor) {
+			var doctorTimeList = $('#doctorTime');
+			doctorTimeList.empty();
+
+			// Get the doctor time options for the selected doctor
+			var doctorTimes = doctorTimeOptions[doctor];
+
+			// Add the doctor time options to the select element
+			$.each(doctorTimes, function (index, time) {
+				doctorTimeList.append($('<option></option>').text(time));
+			});
+
+			// Update the doctor slot time options
+			updateDoctorSlotTimeOptions(doctorTimeList.val());
+		}
+
+		// Function to update the doctor slot time options
+		function updateDoctorSlotTimeOptions(time) {
+			var doctorSlotTimeList = $('#doctorSlotTime');
+			doctorSlotTimeList.empty();
+
+			// Get the doctor slot time options for the selected time
+			var slotTimes = doctorSlotTimeOptions[time];
+
+			// Add the doctor slot time options to the select element
+			$.each(slotTimes, function (index, slotTime) {
+				doctorSlotTimeList.append($('<option></option>').text(slotTime));
+			});
+		}
+
+		// Event handler for the specialization select change
+		$('#specialization').change(function () {
+			var specialization = $(this).val();
+			updateDoctorOptions(specialization);
+		});
+
+		// Event handler for the doctor select change
+		$('#doctorlist').change(function () {
+			var doctor = $(this).val();
+			updateDoctorTimeOptions(doctor);
+		});
+
+		// Event handler for the doctor time select change
+		$('#doctorTime').change(function () {
+			var time = $(this).val();
+			updateDoctorSlotTimeOptions(time);
+		});
+
+		// Function to update the doctor slot time options
+		function updateDoctorSlotTimeOptions(time) {
+			var doctorSlotTimeList = $('#doctorSlotTime');
+			doctorSlotTimeList.empty();
+
+			// Get the doctor slot time options for the selected time
+			var slotTimes = doctorSlotTimeOptions[time];
+
+			// Add the doctor slot time options to the select element
+			$.each(slotTimes, function (index, slotTime) {
+				doctorSlotTimeList.append($('<option></option>').text(slotTime));
+			});
+		}
+
+		// Initialize the form with default values
+		updateDoctorOptions($('#specialization').val());
+
+</script>
